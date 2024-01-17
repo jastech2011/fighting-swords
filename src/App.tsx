@@ -33,14 +33,13 @@ function App() {
 
   useEffect(() => {
     let battleTimeout: ReturnType<typeof setTimeout>;
-    let restartTimeout: ReturnType<typeof setTimeout>;
 
     if (showBattle) {
       battleTimeout = setTimeout(() => {
         setShowBattle(false);
         setShowResult(true);
 
-        restartTimeout = setTimeout(() => {
+        setTimeout(() => {
           setShowResult(false);
           setShowButton(true);
         }, DELAY_RESTART);
@@ -49,7 +48,6 @@ function App() {
 
     return () => {
       clearTimeout(battleTimeout);
-      clearTimeout(restartTimeout);
     };
   }, [showBattle]);
 
